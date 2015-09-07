@@ -1,5 +1,4 @@
 
-
 package D1;
 
 import edu.princeton.cs.algs4.StdOut;
@@ -12,7 +11,7 @@ import edu.princeton.cs.introcs.StdIn;
  *  @author Kevin Wayne
  *  modified by Steinn Ellidi Petursson and Skuli Þor Arnason.
  */
-public class HeightedQuickUnionUF {
+public class HQU {
     private int[] parent;   // parent[i] = parent of i
     private int[] height;     // height[i] = number of objects in subtree rooted at i
     private int count;      // number of components
@@ -22,7 +21,7 @@ public class HeightedQuickUnionUF {
      * @param N the number of objects
      * @throws java.lang.IllegalArgumentException if N < 0
      */
-    public HeightedQuickUnionUF(int N) {
+    public HQU(int N) {
         count = N;
         parent = new int[N];
         height = new int[N];
@@ -109,7 +108,7 @@ public class HeightedQuickUnionUF {
      */
     public static void main(String[] args) {
         int N = StdIn.readInt();
-        HeightedQuickUnionUF uf = new HeightedQuickUnionUF(N);
+        HQU uf = new HQU(N);
         while (!StdIn.isEmpty()) {
             int p = StdIn.readInt();
             int q = StdIn.readInt();
