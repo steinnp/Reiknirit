@@ -1,0 +1,48 @@
+package D1;
+
+/**
+ * Created by Steinn on 07/09/15.
+ */
+
+import java.util.ArrayList;
+import java.util.Random;
+import edu.princeton.cs.algs4.StdOut;
+
+public class RandomConnections {
+
+    private static class Connection
+    {
+        int p;
+        int q;
+        public Connection(int p, int q) {
+            this.p = p; this.q = q;
+        }
+    }
+
+    public static Connection[] genConnections(int N){
+
+        ArrayList<Connection> connections = new ArrayList<Connection>();
+        WQUPC union = new WQUPC(N);
+        Random rand = new Random();
+        while(union.count() > 1){
+            int p = rand.nextInt(N);
+            int q = rand.nextInt(N);
+            union.union(p, q);
+            Connection connect = new Connection(p, q);
+            connections.add(connect);
+            StdOut.println(union.count());
+        }
+        Connection[] returnArray = new Connection[connections.size()];
+        for(int i = 0; i < returnArray.length; i++){
+            returnArray[i] = connections.get(i);
+        }
+        return returnArray;
+    }
+
+    public static void main(String[] args){
+        Connection[] connect = RandomConnections.genConnections(5);
+        for(int i = 0; i < connect.length; i++){
+            StdOut.println(connect[i].p + connect[i].q);
+        }
+    }
+}
